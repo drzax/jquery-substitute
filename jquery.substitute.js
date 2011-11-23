@@ -59,6 +59,9 @@
 		
 		/*
 		 * Undo a replacement
+		 * 
+		 * @TODO: Return the DOM to exactly how it was rather than leaving all 
+		 * these span tags lying around.
 		 */
 		undo : function(_opts) {
 			
