@@ -35,18 +35,20 @@
 			var replace = function() {
 				if ( this.nodeType == 3 || $.nodeName(this, "br") ) {
 					
+					// Get outa here if there's nothing to do
 					if ( opts.ignoreWhitespace && /^\s*$/.test(this.nodeValue) ) return;
 					
-					var $replacement = $('<span class="' + opts.name + '"></span>').data('original', this.data),
-						content = '';
+					var span = document.createElement('span');
+					span.className = opts.name;
+					span.setAttribute('data-original', this.nodeValue);
 					
 					if ( typeof search === 'function' ) { // Function replacement
-						content = search.call(this, this.nodeValue, replacement);
+						span.innerHTML = search.call(this, this.nodeValue, replacement);
 					} else { // Plain old String.replace()
-						content = this.nodeValue.replace(search, replacement);
+						span.innerHTML = this.nodeValue.replace(search, replacement);
 					}
 					
-					this.parentNode.replaceChild($replacement.html(content).get(0), this);
+					this.parentNode.replaceChild(span, this);
 					return;
 				}
 				$(this).contents().each( replace );
