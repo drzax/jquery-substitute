@@ -4,17 +4,11 @@ value can be a substring, regular expression or function.
 ## Usage
 
 ```javascript
-$('selector').substitute([command][, options]);
-```
+// Perform the substitution
+$('selector').substitute(search, replace[, options]);
 
-If the <code>command</code> parameter is omitted, the <code>'substitute'</code> command
-is assumed (see below).
-
-The following commands are supported:
-
-```javascript
-'substitute'		// Performs a substitution.
-'undo'				// Undoes a previous the substitution.
+// Undo the substitution
+$('selector').substitute('undo'[, options]);
 ```
 
 The following options are available:
