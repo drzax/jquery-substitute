@@ -15,6 +15,9 @@ function. If a function is passed it will be called with the following arguments
 * **text** The text for the function to act upon.
 * **replace** The replacement value passed to the jQuery.substitute function. There's no reason this can't be a function if necessary.
 
+**replace** string or function used for substitution for substrings found by the
+<code>search</code> parameter. 
+
 ### Options
 
 ```javascript
