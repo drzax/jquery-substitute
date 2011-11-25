@@ -47,8 +47,9 @@
 					} else { // Plain old String.replace()
 						span.innerHTML = this.nodeValue.replace(search, replacement);
 					}
-					
-					this.parentNode.replaceChild(span, this);
+					if (span.innerHTML != this.nodeValue) {
+						this.parentNode.replaceChild(span, this);
+					}
 					return;
 				}
 				$(this).contents().each( replace );
