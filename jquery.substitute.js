@@ -8,7 +8,20 @@
  * This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
  * http://creativecommons.org/licenses/by-sa/3.0/ 
  */
-(function($){
+
+
+(function (definition) {
+    if ( typeof define === 'function' && define.amd ) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], definition);
+    } else if (typeof exports === 'object') {
+        // Node/CommonJS style for Browserify
+        module.exports = definition;
+    } else {
+        // Browser globals
+        definition(jQuery);
+    }
+}(function($){
 	
 	/*
 	 * Make error logging easier.
@@ -99,5 +112,5 @@
 		name: 'substitute',
 		ignoreWhitespace: true
 	}
-})(jQuery);
+}));
 
