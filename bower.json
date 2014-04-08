@@ -1,0 +1,28 @@
+{
+  "name": "jquery-substitute",
+  "version": "1.0.0",
+  "homepage": "https://github.com/drzax/jquery-substitute",
+  "authors": [
+    "Simon Elvery <simon@elvery.net>"
+  ],
+  "description": "Recursively replace a string of text throughout a document's DOM",
+  "main": "jquery.substitute.js",
+  "keywords": [
+    "jquery",
+    "plugin",
+    "substitute",
+    "text",
+    "replace"
+  ],
+  "dependencies": {
+    "jquery": "^1.8.0"
+  },
+  "license": "CC BY-SA 3.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
