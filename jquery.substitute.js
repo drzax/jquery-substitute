@@ -1,8 +1,8 @@
-/*
+/*!
  * jQuery.substitute plugin
  * https://github.com/drzax/jquery-substitute
  *
- * Copyright 2011, Simon Elvery
+ * © Simon Elvery
  * http://elvery.net
  *
  * This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
@@ -31,7 +31,7 @@
 			window.console.log(message);
 		}
 		$.error(message);
-	}
+	};
 	
 	var methods = {
 		
@@ -46,10 +46,12 @@
 			 * This does the actual replacing. It's called recursively over all nodes.
 			 */
 			var replace = function() {
-				if ( this.nodeType == 3 || $.nodeName(this, "br") ) {
+				if ( this.nodeType === 3 || $.nodeName(this, "br") ) {
 					
 					// Get outa here if there's nothing to do
-					if ( opts.ignoreWhitespace && /^\s*$/.test(this.nodeValue) ) return;
+					if ( opts.ignoreWhitespace && /^\s*$/.test(this.nodeValue) ) {
+						return;
+					}
 					
 					var span = document.createElement('span');
 					span.className = opts.name;
@@ -60,13 +62,13 @@
 					} else { // Plain old String.replace()
 						span.innerHTML = this.nodeValue.replace(search, replacement);
 					}
-					if (span.innerHTML != this.nodeValue) {
+					if (span.innerHTML !== this.nodeValue) {
 						this.parentNode.replaceChild(span, this);
 					}
-					return;
+				} else {
+					$(this).contents().each( replace );
 				}
-				$(this).contents().each( replace );
-			}
+			};
 			
 			return this.each(function() {
 				$(this).contents().each( replace );
@@ -90,7 +92,7 @@
 				});
 			});
 		}
-	}
+	};
 	
 	// The plugin function
 	$.fn.substitute = function( method ) {
@@ -104,13 +106,13 @@
 			log( '[substitute] method ' +  method + ' does not exist' );
 			return this;
 		}
-	}
+	};
 	
 	
 	// Default options exposed so they can be updated globally.
 	$.fn.substitute.defaults = {
 		name: 'substitute',
 		ignoreWhitespace: true
-	}
+	};
 }));
 
