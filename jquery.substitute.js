@@ -96,15 +96,12 @@
 	
 	// The plugin function
 	$.fn.substitute = function( method ) {
-		if ( methods[method] ) {
+		if ( typeof method === 'string' && methods[method] ) {
 			// Remove the first argument (method name) and send on to the requested method.
 			return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));
-		} else if ( typeof method === 'object' || ! method ) {
+		} else {
 			// Initialise the substitution
 			return methods.substitute.apply( this, arguments );
-		} else {
-			log( '[substitute] method ' +  method + ' does not exist' );
-			return this;
 		}
 	};
 	
