@@ -87,8 +87,7 @@
 			
 			return this.each(function(){
 				$('span.'+opts.name, this).each(function(){
-					var $this = $(this);
-					$this.text($this.data('original'));
+					this.parentNode.replaceChild(document.createTextNode($(this).data('original')), this);
 				});
 			});
 		}
